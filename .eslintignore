@@ -1,0 +1,4 @@
+build/
+src/templates/*.js
+tmp/
+migrations/

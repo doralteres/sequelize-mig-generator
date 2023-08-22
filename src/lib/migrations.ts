@@ -1,5 +1,5 @@
 import {Model, ModelAttributeColumnOptions, Sequelize} from 'sequelize';
-import {modelsJsonType} from './types';
+import {modelsJsonType} from '../types';
 import {find, flattenDepth, partition} from 'lodash';
 import renderTemplate from './templates';
 

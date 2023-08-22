@@ -112,12 +112,3 @@ const renderTemplate = async (
 };
 
 export default renderTemplate;
-
-// renderTemplate(
-//   'createTable',
-//   {
-//     tableName: 'test',
-//     attributes: {id: 'string', type: 'STRING(500)', bool: true},
-//   },
-//   './src/templates'
-// );

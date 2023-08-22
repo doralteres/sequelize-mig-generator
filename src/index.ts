@@ -1,7 +1,7 @@
 import 'dotenv/config';
-import initDb from './sequelize';
-import {getModelsJson, setModelsJson} from './fs';
-import generateMigrations from './migrations';
+import initDb from './lib/sequelize';
+import {getModelsJson, setModelsJson} from './lib/fs';
+import generateMigrations from './lib/migrations';
 
 const main = async () => {
   const sequelize = await initDb();

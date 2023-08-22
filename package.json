@@ -1,8 +1,12 @@
 {
   "name": "sequelize-mig-generator",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
+  "author": {
+    "name": "Dor Alteresku",
+    "url": "https://github.com/doralteres"
+  },
   "devDependencies": {
     "@types/lodash": "^4.14.197",
     "@types/node": "^20.4.5",

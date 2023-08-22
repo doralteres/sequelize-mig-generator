@@ -1,5 +1,5 @@
 import {existsSync, mkdirSync, readFileSync, writeFileSync} from 'fs';
-import {modelsJsonType} from './types';
+import {modelsJsonType} from '../types';
 
 export const getModelsJson = async () => {
   if (!existsSync('./migrations')) {

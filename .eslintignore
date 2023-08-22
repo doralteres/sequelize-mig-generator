@@ -1,4 +1,2 @@
-build/
-src/templates/*.js
-tmp/
-migrations/
+dist/
+node_modules/

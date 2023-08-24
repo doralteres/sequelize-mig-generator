@@ -27,6 +27,7 @@
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "gts": "^5.0.0",
+    "standard-version": "^9.5.0",
     "ts-node": "^10.9.1",
     "typescript": "~5.1.6"
   },
@@ -43,16 +44,14 @@
     "cli": "ts-node ./src/bin/index.ts",
     "local": "chmod +x ./dist/src/bin/index.js && yarn unlink --global && yarn link --global",
     "copy:templates": "cp -r ./templates ./dist/",
-    "commit": "cz"
+    "commit": "cz",
+    "release": "standard-version --releaseCommitMessageFormat 'chore(release): {{currentTag}} :dizzy: [skip ci]'"
   },
   "dependencies": {
     "commander": "^11.0.0",
     "handlebars": "^4.7.8",
     "lodash": "^4.17.21",
-    "pg": "^8.11.2",
-    "pg-hstore": "^2.3.4",
-    "sequelize": "^6.32.1",
-    "sqlite3": "^5.1.6"
+    "sequelize": "^6.32.1"
   },
   "config": {
     "commitizen": {

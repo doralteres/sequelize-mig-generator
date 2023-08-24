@@ -54,6 +54,7 @@
   },
   "dependencies": {
     "commander": "^11.0.0",
+    "consola": "^3.2.3",
     "handlebars": "^4.7.8",
     "lodash": "^4.17.21",
     "sequelize": "^6.32.1"

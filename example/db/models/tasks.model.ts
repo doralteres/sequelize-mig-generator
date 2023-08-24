@@ -13,16 +13,12 @@ const Users = (sequelize: Sequelize) => {
     },
     description: {
       type: DataTypes.STRING,
-      allowNull: true,
-      unique: true,
-      validate: {
-        isEmail: true,
-      },
+      allowNull: false,
     },
-    // isCompleted: {
-    //   type: DataTypes.BOOLEAN,
-    //   defaultValue: false,
-    // },
+    isCompleted: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
     userId: {
       type: DataTypes.INTEGER,
       references: {

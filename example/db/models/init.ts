@@ -50,4 +50,20 @@ const initModels = async (sequelize: Sequelize) => {
   return sequelize;
 };
 
-export default initModels;
+const initDB = async () => {
+  const sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: './db.sqlite',
+    database: 'test',
+  });
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+    return await initModels(sequelize);
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+    return Promise.reject('Unable to connect to the database');
+  }
+};
+
+export default initDB;

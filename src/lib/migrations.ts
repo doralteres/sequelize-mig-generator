@@ -31,7 +31,8 @@ const addTypesToModel = async (modelAttr: {
 
 const generateMigrations = async (
   sequelize: Sequelize,
-  modelsJson: modelsJsonType
+  modelsJson: modelsJsonType,
+  migrationsPath: string
 ) => {
   const newModelsJson: modelsJsonType = {};
   const sortedModels = await getSortedModels(sequelize);
@@ -46,7 +47,7 @@ const generateMigrations = async (
       await renderTemplate(
         'createTable',
         {tableName: model, attributes: modelAttr},
-        './migrations'
+        migrationsPath
       );
     } else {
       for (const attr in modelAttr) {
@@ -55,7 +56,7 @@ const generateMigrations = async (
           await renderTemplate(
             'addColumn',
             {tableName: model, columnName: attr, attributes: modelAttr[attr]},
-            './migrations'
+            migrationsPath
           );
         } else {
           if (
@@ -71,7 +72,7 @@ const generateMigrations = async (
                 attributes: modelAttr[attr],
                 prevAttributes: modelsJson[model][attr],
               },
-              './migrations'
+              migrationsPath
             );
           }
         }
@@ -82,7 +83,7 @@ const generateMigrations = async (
   for (const model in modelsJson) {
     if (Object.keys(sequelize.models).indexOf(model) === -1) {
       console.warn(model, 'shouldnt exist, deleting table');
-      await renderTemplate('removeTable', {tableName: model}, './migrations');
+      await renderTemplate('removeTable', {tableName: model}, migrationsPath);
     } else {
       const modelObj = sequelize.models[model];
       const modelAttr = modelObj.getAttributes();
@@ -93,7 +94,7 @@ const generateMigrations = async (
           await renderTemplate(
             'removeColumn',
             {tableName: model, columnName: attr},
-            './migrations'
+            migrationsPath
           );
         }
       }

@@ -26,3 +26,8 @@ export interface templateData {
   attributes?: templateAttributes;
   prevAttributes?: templateAttributes;
 }
+
+export type mainArgs = {
+  sequelizePath: string;
+  migrationsPath: string;
+};

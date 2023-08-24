@@ -1,7 +1,7 @@
 import * as HB from 'handlebars';
 import {templateData, templates} from '../types';
 import {existsSync, readFileSync, writeFileSync} from 'fs';
-import {join} from 'path';
+import {join, resolve} from 'path';
 import {Model, ModelAttributeColumnOptions} from 'sequelize';
 
 const fileExtention = 'template.hbs';
@@ -66,7 +66,13 @@ const renderTemplate = async (
   migrationsPath: string
 ) => {
   await sleep(1000);
-  const templatePath = join(__dirname, `${templateName}.${fileExtention}`);
+  const templatePath = resolve(
+    __dirname,
+    '../../templates',
+    `${templateName}.${fileExtention}`
+  );
+  console.log('templatePath', templatePath);
+
   if (!existsSync(templatePath)) {
     return Promise.reject('Template not found ' + templatePath);
   }

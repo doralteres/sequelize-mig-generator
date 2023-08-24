@@ -1,15 +1,15 @@
 import {existsSync, mkdirSync, readFileSync, writeFileSync} from 'fs';
 import {modelsJsonType} from '../types';
 
-export const getModelsJson = async () => {
-  if (!existsSync('./migrations')) {
-    mkdirSync('./migrations');
+export const getModelsJson = async (migrationsPath: string) => {
+  if (!existsSync(migrationsPath)) {
+    mkdirSync(migrationsPath);
   }
   let modelsJson: modelsJsonType = {};
   try {
-    if (existsSync('./migrations/models.json')) {
+    if (existsSync(migrationsPath + '/models.json')) {
       modelsJson = JSON.parse(
-        readFileSync('./migrations/models.json').toString()
+        readFileSync(migrationsPath + '/models.json').toString()
       );
     }
     return modelsJson;
@@ -19,9 +19,15 @@ export const getModelsJson = async () => {
   }
 };
 
-export const setModelsJson = async (newModelsJson: modelsJsonType) => {
+export const setModelsJson = async (
+  migrationsPath: string,
+  newModelsJson: modelsJsonType
+) => {
   try {
-    writeFileSync('./migrations/models.json', JSON.stringify(newModelsJson));
+    writeFileSync(
+      migrationsPath + '/models.json',
+      JSON.stringify(newModelsJson)
+    );
     return Promise.resolve();
   } catch (e) {
     console.error('failed to set models.json file', e);

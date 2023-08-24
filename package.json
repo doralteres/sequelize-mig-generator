@@ -1,12 +1,26 @@
 {
   "name": "sequelize-mig-generator",
+  "description": "Streamline the management of Sequelize database schema changes with a CLI tool for generating migration files effortlessly.",
+  "keywords": [],
   "version": "0.0.1",
-  "main": "index.js",
   "license": "MIT",
   "author": {
     "name": "Dor Alteresku",
     "url": "https://github.com/doralteres"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/doralteres/sequelize-mig-generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/doralteres/sequelize-mig-generator/issues"
+  },
+  "main": "./dist/src/index.js",
+  "bin": "./dist/src/bin/index.js",
+  "files": [
+    "dist",
+    "templates"
+  ],
   "devDependencies": {
     "@types/lodash": "^4.14.197",
     "@types/node": "^20.4.5",
@@ -19,16 +33,20 @@
   "scripts": {
     "lint": "gts lint",
     "clean": "gts clean",
-    "compile": "tsc",
+    "compile": "rm -rf ./dist && tsc",
     "fix": "gts fix",
     "prepare": "yarn run compile",
     "pretest": "yarn run compile",
+    "prelocal": "yarn run compile",
     "posttest": "yarn run lint",
-    "dev": "ts-node ./src/index.ts",
+    "postcompile": "yarn run copy:templates",
+    "cli": "ts-node ./src/bin/index.ts",
+    "local": "chmod +x ./dist/src/bin/index.js && yarn unlink --global && yarn link --global",
+    "copy:templates": "cp -r ./templates ./dist/",
     "commit": "cz"
   },
   "dependencies": {
-    "dotenv": "^16.3.1",
+    "commander": "^11.0.0",
     "handlebars": "^4.7.8",
     "lodash": "^4.17.21",
     "pg": "^8.11.2",

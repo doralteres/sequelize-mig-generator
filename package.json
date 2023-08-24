@@ -1,7 +1,12 @@
 {
   "name": "sequelize-mig-generator",
   "description": "Streamline the management of Sequelize database schema changes with a CLI tool for generating migration files effortlessly.",
-  "keywords": [],
+  "keywords": [
+    "sequelize",
+    "cli",
+    "migration-tool",
+    "sequelize-auto"
+  ],
   "version": "0.0.1",
   "license": "MIT",
   "author": {

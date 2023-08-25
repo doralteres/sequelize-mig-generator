@@ -2,12 +2,16 @@
 
 The Sequelize Migration Generator CLI is a command-line tool designed to streamline the process of creating migration files for Sequelize-based databases. This tool helps developers manage database schema changes effectively and maintain version control for database structures.
 
+Currently CLI supports `createTable`, `removeTable`, `addColumn`, `modifyColumn`, `removeColumn` migrations.
+
 ![npm](https://img.shields.io/npm/v/sequelize-mig-generator)
 ![NPM](https://img.shields.io/npm/l/sequelize-mig-generator)
 ![GitHub issues](https://img.shields.io/github/issues/doralteres/sequelize-mig-generator)
 [![CI](https://github.com/doralteres/sequelize-mig-generator/actions/workflows/release.yaml/badge.svg)](https://github.com/doralteres/sequelize-mig-generator/actions/workflows/release.yaml)
 [![Code Style: Google](https://img.shields.io/badge/code%20style-google-blueviolet.svg)](https://github.com/google/gts)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
+![EXAMPLE](./images/cli_example_1.png)
 
 ### ⚠️ Disclaimer: Development Mode ⚠️
 

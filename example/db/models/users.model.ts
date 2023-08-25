@@ -25,25 +25,14 @@ const Users = (sequelize: Sequelize) => {
         isEmail: true,
       },
     },
-    secondaryEmail: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      unique: true,
-      validate: {
-        isEmail: true,
-      },
-    },
     phoneNumber: {
-      type: DataTypes.STRING, // TODO: validation
+      type: DataTypes.STRING,
     },
     gender: {
       type: DataTypes.STRING,
       validate: {
         isIn: [['male', 'female', 'n/a']],
       },
-    },
-    birthday_new: {
-      type: DataTypes.DATE,
     },
     locale: {
       type: DataTypes.STRING,

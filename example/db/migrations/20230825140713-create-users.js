@@ -23,29 +23,10 @@ module.exports = {
         validate: {isEmail:true},
         fieldName: 'email',
       },
-      secondaryEmail: {
-        type: Sequelize.STRING(255),
-        allowNull: true,
-        unique: true,
-        validate: {isEmail:true},
-        fieldName: 'secondaryEmail',
-      },
-      phoneNumber: {
-        type: Sequelize.STRING(255),
-        fieldName: 'phoneNumber',
-      },
       gender: {
         type: Sequelize.STRING(255),
         validate: {isIn:[['male','female','n/a']]},
         fieldName: 'gender',
-      },
-      birthday_new: {
-        type: Sequelize.DATE,
-        fieldName: 'birthday_new',
-      },
-      locale: {
-        type: Sequelize.STRING(255),
-        fieldName: 'locale',
       },
       createdAt: {
         type: Sequelize.DATE,

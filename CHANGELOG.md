@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/doralteres/sequelize-mig-generator/compare/v0.0.3...v0.0.4) (2023-08-25)
+
+
+### Features
+
+* :art: improve logger & errors using consola ([4ca3498](https://github.com/doralteres/sequelize-mig-generator/commit/4ca3498458aee7bdce927290ef1eebc2cd7cf3b6))
+
 ### [0.0.3](https://github.com/doralteres/sequelize-mig-generator/compare/v0.0.2...v0.0.3) (2023-08-25)
 
 ### 0.0.2 (2023-08-24)

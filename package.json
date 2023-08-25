@@ -23,9 +23,7 @@
   "main": "./dist/src/index.js",
   "bin": "./dist/src/bin/index.js",
   "files": [
-    "dist",
-    "templates"
-  ],
+    "dist"  ],
   "devDependencies": {
     "@types/lodash": "^4.14.197",
     "@types/node": "^20.4.5",

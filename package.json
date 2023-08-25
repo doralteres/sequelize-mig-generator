@@ -25,6 +25,9 @@
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">8.5.0"
+  },
   "devDependencies": {
     "@types/lodash": "^4.14.197",
     "@types/node": "^20.4.5",

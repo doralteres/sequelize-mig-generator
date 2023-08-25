@@ -4,6 +4,7 @@ import {Command} from 'commander';
 import {name, version, description} from '../../package.json';
 import {mainArgs} from '../types';
 import main from '..';
+import consola from 'consola';
 
 const program = new Command();
 
@@ -28,9 +29,9 @@ const {sequelizePath, migrationsPath}: mainArgs = program.opts();
 
 main({migrationsPath, sequelizePath})
   .then(() => {
-    console.log('done');
+    consola.success('Done');
   })
   .catch(e => {
-    console.error(e);
+    consola.error(new Error('sequelize-mig-generator error'));
     throw new Error(e);
   });

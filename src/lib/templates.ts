@@ -3,6 +3,7 @@ import {templateData, templates} from '../types';
 import {existsSync, readFileSync, writeFileSync} from 'fs';
 import {join, resolve} from 'path';
 import {Model, ModelAttributeColumnOptions} from 'sequelize';
+import consola from 'consola';
 
 const fileExtention = 'template.hbs';
 
@@ -71,7 +72,6 @@ const renderTemplate = async (
     '../../templates',
     `${templateName}.${fileExtention}`
   );
-  console.log('templatePath', templatePath);
 
   if (!existsSync(templatePath)) {
     return Promise.reject('Template not found ' + templatePath);
@@ -111,10 +111,9 @@ const renderTemplate = async (
   );
   const template = HB.compile(readFileSync(templatePath).toString());
   const content = template(data);
-  writeFileSync(
-    join(migrationsPath, generateFileName(templateName, data)),
-    content
-  );
+  const fileName = generateFileName(templateName, data);
+  writeFileSync(join(migrationsPath, fileName), content);
+  consola.success(fileName, 'Created!');
 };
 
 export default renderTemplate;

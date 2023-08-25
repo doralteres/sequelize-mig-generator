@@ -2,6 +2,7 @@ import {Model, ModelAttributeColumnOptions, Sequelize} from 'sequelize';
 import {modelsJsonType} from '../types';
 import {find, flattenDepth, partition} from 'lodash';
 import renderTemplate from './templates';
+import consola from 'consola';
 
 const getSortedModels = async (sequelize: Sequelize) => {
   const sortedModels = partition(sequelize.models, o =>
@@ -36,14 +37,13 @@ const generateMigrations = async (
 ) => {
   const newModelsJson: modelsJsonType = {};
   const sortedModels = await getSortedModels(sequelize);
-  console.debug('sortedModels', sortedModels);
   // Checking left-to-right diff
   for (const model of sortedModels) {
     const modelObj = sequelize.models[model];
     const modelAttr = await addTypesToModel(modelObj.getAttributes());
     newModelsJson[model] = modelAttr;
     if (Object.keys(modelsJson).indexOf(model) === -1) {
-      console.warn(model, 'does not exist, creating table');
+      consola.start(model, 'does not exist, creating table');
       await renderTemplate(
         'createTable',
         {tableName: model, attributes: modelAttr},
@@ -52,7 +52,7 @@ const generateMigrations = async (
     } else {
       for (const attr in modelAttr) {
         if (Object.keys(modelsJson[model]).indexOf(attr) === -1) {
-          console.warn(model, attr, 'does not exist, adding column');
+          consola.start(model, attr, 'does not exist, adding column');
           await renderTemplate(
             'addColumn',
             {tableName: model, columnName: attr, attributes: modelAttr[attr]},
@@ -63,7 +63,7 @@ const generateMigrations = async (
             JSON.stringify({data: modelsJson[model][attr]}) !==
             JSON.stringify({data: modelAttr[attr]})
           ) {
-            console.warn(model, attr, 'is changed, modifying options');
+            consola.start(model, attr, 'is changed, modifying options');
             await renderTemplate(
               'modifyColumn',
               {
@@ -82,7 +82,7 @@ const generateMigrations = async (
   // Checking right-to-left diff
   for (const model in modelsJson) {
     if (Object.keys(sequelize.models).indexOf(model) === -1) {
-      console.warn(model, 'shouldnt exist, deleting table');
+      consola.start(model, 'shouldnt exist, deleting table');
       await renderTemplate('removeTable', {tableName: model}, migrationsPath);
     } else {
       const modelObj = sequelize.models[model];
@@ -90,7 +90,7 @@ const generateMigrations = async (
 
       for (const attr in modelsJson[model]) {
         if (Object.keys(modelAttr).indexOf(attr) === -1) {
-          console.warn(model, attr, 'shouldnt exist, deleting column');
+          consola.start(model, attr, 'shouldnt exist, deleting column');
           await renderTemplate(
             'removeColumn',
             {tableName: model, columnName: attr},

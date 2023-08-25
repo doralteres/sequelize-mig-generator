@@ -1,5 +1,6 @@
 import {existsSync, mkdirSync, readFileSync, writeFileSync} from 'fs';
 import {modelsJsonType} from '../types';
+import consola from 'consola';
 
 export const getModelsJson = async (migrationsPath: string) => {
   if (!existsSync(migrationsPath)) {
@@ -14,7 +15,7 @@ export const getModelsJson = async (migrationsPath: string) => {
     }
     return modelsJson;
   } catch (e) {
-    console.error('failed to get models.json file', e);
+    consola.error('failed to get models.json file', e);
     return Promise.reject(e);
   }
 };
@@ -30,7 +31,7 @@ export const setModelsJson = async (
     );
     return Promise.resolve();
   } catch (e) {
-    console.error('failed to set models.json file', e);
+    consola.error('failed to set models.json file', e);
     return Promise.reject(e);
   }
 };

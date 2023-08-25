@@ -7,7 +7,7 @@
     "migration-tool",
     "sequelize-auto"
   ],
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "author": {
     "name": "Dor Alteresku",
@@ -23,7 +23,8 @@
   "main": "./dist/src/index.js",
   "bin": "./dist/src/bin/index.js",
   "files": [
-    "dist"  ],
+    "dist"
+  ],
   "devDependencies": {
     "@types/lodash": "^4.14.197",
     "@types/node": "^20.4.5",

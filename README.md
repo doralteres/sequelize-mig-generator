@@ -75,7 +75,7 @@ pnpm i sequelize-mig-generator
 
   sequelize-mig-generator only needs 2 things to know:
 
-  - **sequelize path** - path to sequelize init script, should have a default exported function that return a promise with the updated sequelize object. (check the [example](./example/db/models/init.ts) for more info.)
+  - **sequelize path** - path to sequelize init script, should have a default exported function that return a promise with the updated sequelize object. (check the [example](./example/db/models/index.ts) for more info.)
   - **migrations folder** - tell the cli where to save the generated migration files.
 
   ```bash

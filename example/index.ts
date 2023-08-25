@@ -1,6 +1,6 @@
 import express from 'express';
 
-import initDB from './db/models/init';
+import initDB from './db/models';
 import usersRoutes from './routes/users.router';
 import tasksRoutes from './routes/tasks.router';
 import bodyParser from 'body-parser';

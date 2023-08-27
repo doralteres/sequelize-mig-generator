@@ -31,6 +31,7 @@
   "devDependencies": {
     "@types/lodash": "^4.14.197",
     "@types/node": "^20.4.5",
+    "@types/sequelize": "^4.28.15",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "gts": "^5.0.0",
@@ -48,7 +49,7 @@
     "prelocal": "yarn run compile",
     "posttest": "yarn run lint",
     "postcompile": "yarn run copy:templates",
-    "cli": "ts-node ./src/bin/index.ts",
+    "test:cli": "ts-node ./src/bin/index.ts -s ./example/dist/db/models/index.js -m ./example/db/migrations",
     "local": "chmod +x ./dist/src/bin/index.js && yarn unlink --global && yarn link --global",
     "copy:templates": "cp -r ./templates ./dist/",
     "commit": "cz",

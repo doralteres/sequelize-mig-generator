@@ -1,17 +1,12 @@
 import {Model, ModelAttributeColumnOptions, Sequelize} from 'sequelize';
 import {modelsJsonType} from '../types';
-import {find, flattenDepth, partition} from 'lodash';
 import renderTemplate from './templates';
 import consola from 'consola';
 
 const getSortedModels = async (sequelize: Sequelize) => {
-  const sortedModels = partition(sequelize.models, o =>
-    find(
-      o.associations,
-      f => f.associationType === 'HasOne' || f.associationType === 'HasMany'
-    )
-  );
-  return flattenDepth(sortedModels, 1).map(s => s.name);
+  return (sequelize.modelManager.getModelsTopoSortedByForeignKey() || [])
+    .map(m => m.name)
+    .reverse();
 };
 
 const addTypesToModel = async (modelAttr: {

@@ -21,11 +21,13 @@ const addTypesToModel = async (modelAttr: {
   const attrWithTypes = modelAttr;
   for (const attr in modelAttr) {
     const attrType = modelAttr[attr].type;
-    // @ts-expect-error we know key is exist
-    attrWithTypes[attr].type = `${attrType.key}${
-      // @ts-expect-error we know lenght is exist
-      attrType._length ? `(${attrType._length})` : ''
-    }`;
+    attrWithTypes[attr].type =
+      typeof attrType === 'string'
+        ? attrType
+        : `${attrType.key}${
+            // @ts-expect-error we know lenght is exist
+            attrType._length ? `(${attrType._length})` : ''
+          }`;
   }
   return attrWithTypes;
 };

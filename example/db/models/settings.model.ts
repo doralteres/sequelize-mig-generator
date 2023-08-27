@@ -18,6 +18,11 @@ const Users = (sequelize: Sequelize) => {
     value: {
       type: DataTypes.STRING,
     },
+    testField: {
+      type: DataTypes.NUMBER,
+      defaultValue: () => 2 * 2 + 4,
+      allowNull: false,
+    },
   });
 };
 

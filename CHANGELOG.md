@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/doralteres/sequelize-mig-generator/compare/v0.0.4...v0.0.5) (2023-08-27)
+
+
+### Bug Fixes
+
+* :bug: get sorted modules using ModelManager ([06197ce](https://github.com/doralteres/sequelize-mig-generator/commit/06197cedd1dd0ed60a51fe09c02dfe30fe4b2b0b))
+* :bug: ignore function type fields in models ([8e8b8b0](https://github.com/doralteres/sequelize-mig-generator/commit/8e8b8b06bf68cf1d90257951529c8659b094176a))
+* :bug: sequelize types return undefine issue ([6267bda](https://github.com/doralteres/sequelize-mig-generator/commit/6267bda311f14c72e020ab638e6e5701f7cb254c))
+
 ### [0.0.4](https://github.com/doralteres/sequelize-mig-generator/compare/v0.0.3...v0.0.4) (2023-08-25)
 
 

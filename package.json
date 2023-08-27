@@ -7,7 +7,7 @@
     "migration-tool",
     "sequelize-auto"
   ],
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "author": {
     "name": "Dor Alteresku",

@@ -30,19 +30,19 @@ Thank you for your understanding and patience as we work towards making this CLI
 Using npm:
 
 ```bash
-npm i sequelize-mig-generator
+npm i sequelize-mig-generator --save-dev
 ```
 
 Using yarn:
 
 ```bash
-yarn add sequelize-mig-generator
+yarn add sequelize-mig-generator -D
 ```
 
 Using pnpm:
 
 ```bash
-pnpm i sequelize-mig-generator
+pnpm i sequelize-mig-generator -D
 ```
 
 ## Getting started

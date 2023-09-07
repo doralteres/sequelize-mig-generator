@@ -2,7 +2,7 @@ import {Sequelize, DataTypes} from 'sequelize';
 
 export const modelName = 'settings';
 
-const Users = (sequelize: Sequelize) => {
+const settings = (sequelize: Sequelize) => {
   return sequelize.define(modelName, {
     id: {
       type: DataTypes.INTEGER,
@@ -18,6 +18,9 @@ const Users = (sequelize: Sequelize) => {
     value: {
       type: DataTypes.STRING,
     },
+    isActive: {
+      type: DataTypes.BOOLEAN,
+    },
     testField: {
       type: DataTypes.NUMBER,
       defaultValue: () => 2 * 2 + 4,
@@ -26,4 +29,4 @@ const Users = (sequelize: Sequelize) => {
   });
 };
 
-export default Users;
+export default settings;

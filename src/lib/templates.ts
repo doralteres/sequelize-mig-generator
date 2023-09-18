@@ -108,6 +108,7 @@ const renderTemplate = async (
   const fileName = generateFileName(templateName, data);
   writeFileSync(join(migrationsPath, fileName), content);
   consola.success(fileName, 'Created!');
+  return true;
 };
 
 export default renderTemplate;

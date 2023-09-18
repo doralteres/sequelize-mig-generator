@@ -34,9 +34,6 @@ const Users = (sequelize: Sequelize) => {
         isIn: [['male', 'female', 'n/a']],
       },
     },
-    locale: {
-      type: DataTypes.STRING,
-    },
   });
 };
 

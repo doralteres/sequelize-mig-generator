@@ -1,8 +1,8 @@
 import {Sequelize, DataTypes} from 'sequelize';
 
-export const modelName = 'settings';
+export const modelName = 'activities';
 
-const settings = (sequelize: Sequelize) => {
+const activities = (sequelize: Sequelize) => {
   return sequelize.define(modelName, {
     id: {
       type: DataTypes.INTEGER,
@@ -10,18 +10,14 @@ const settings = (sequelize: Sequelize) => {
       autoIncrement: true,
       allowNull: false,
     },
-    key: {
-      type: DataTypes.STRING,
-      unique: true,
-      allowNull: false,
+    userId: {
+      type: DataTypes.INTEGER,
+      references: {model: 'users', key: 'id'},
     },
-    value: {
+    comment: {
       type: DataTypes.STRING,
-    },
-    isActive: {
-      type: DataTypes.BOOLEAN,
     },
   });
 };
 
-export default settings;
+export default activities;

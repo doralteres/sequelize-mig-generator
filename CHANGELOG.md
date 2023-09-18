@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/doralteres/sequelize-mig-generator/compare/v0.0.5...v0.0.6) (2023-09-18)
+
+
+### Bug Fixes
+
+* :bug: async render issues ([94e2dd8](https://github.com/doralteres/sequelize-mig-generator/commit/94e2dd88db12a63c24f3a512d1d70cb6df67c78a))
+
 ### [0.0.5](https://github.com/doralteres/sequelize-mig-generator/compare/v0.0.4...v0.0.5) (2023-08-27)
 
 

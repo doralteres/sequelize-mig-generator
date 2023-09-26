@@ -1,4 +1,10 @@
-import {Model, ModelAttributeColumnOptions, Sequelize} from 'sequelize';
+import {
+  Model,
+  ModelAttributeColumnOptions,
+  NumberDataTypeOptions,
+  Sequelize,
+  TextDataTypeOptions,
+} from 'sequelize';
 import {modelsJsonType} from '../types';
 import renderTemplate from './templates';
 import consola from 'consola';
@@ -16,12 +22,20 @@ const addTypesToModel = async (modelAttr: {
   const attrWithTypes = modelAttr;
   for (const attr in modelAttr) {
     const attrType = modelAttr[attr].type;
+    const attrOpt: TextDataTypeOptions | NumberDataTypeOptions | undefined =
+      // @ts-expect-error we know option is there
+      attrType?.options;
     attrWithTypes[attr].type =
       typeof attrType === 'string'
         ? attrType
         : `${attrType.key}${
-            // @ts-expect-error we know lenght is exist
-            attrType._length ? `(${attrType._length})` : ''
+            attrOpt
+              ? attrOpt.length
+                ? `(${attrOpt.length})`
+                : 'precision' in attrOpt && 'scale' in attrOpt
+                ? `(${attrOpt.precision}, ${attrOpt.scale})`
+                : ''
+              : ''
           }`;
   }
   return attrWithTypes;

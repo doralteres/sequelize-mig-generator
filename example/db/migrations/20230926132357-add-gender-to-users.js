@@ -6,10 +6,11 @@ module.exports = {
     try {
       await queryInterface.addColumn(
         'users',
-        'locale',
+        'gender',
         {
-          type: Sequelize.STRING(255),
-          fieldName: 'locale',
+          type: Sequelize.STRING,
+          validate: {isIn:[['male','female','n/a']]},
+          fieldName: 'gender',
         },
         { transaction }
       );
@@ -22,7 +23,7 @@ module.exports = {
   async down(queryInterface, Sequelize) {
     const transaction = await queryInterface.sequelize.transaction();
     try {
-      await queryInterface.removeColumn('users', 'locale', { transaction });
+      await queryInterface.removeColumn('users', 'gender', { transaction });
       await transaction.commit();
     } catch (err) {
       await transaction.rollback();

@@ -2,18 +2,13 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('tasks', {
+    await queryInterface.createTable('activities', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
         fieldName: 'id',
-      },
-      description: {
-        type: Sequelize.STRING(255),
-        allowNull: false,
-        fieldName: 'description',
       },
       userId: {
         type: Sequelize.INTEGER,
@@ -22,6 +17,10 @@ module.exports = {
         allowNull: true,
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
+      },
+      comment: {
+        type: Sequelize.STRING,
+        fieldName: 'comment',
       },
       createdAt: {
         type: Sequelize.DATE,
@@ -36,6 +35,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('tasks');
+    await queryInterface.dropTable('activities');
   },
 };

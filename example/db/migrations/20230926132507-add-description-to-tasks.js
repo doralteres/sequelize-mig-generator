@@ -5,11 +5,12 @@ module.exports = {
     const transaction = await queryInterface.sequelize.transaction();
     try {
       await queryInterface.addColumn(
-        'users',
-        'phoneNumber',
+        'tasks',
+        'description',
         {
-          type: Sequelize.STRING(255),
-          fieldName: 'phoneNumber',
+          type: Sequelize.STRING,
+          allowNull: false,
+          fieldName: 'description',
         },
         { transaction }
       );
@@ -22,7 +23,7 @@ module.exports = {
   async down(queryInterface, Sequelize) {
     const transaction = await queryInterface.sequelize.transaction();
     try {
-      await queryInterface.removeColumn('users', 'phoneNumber', { transaction });
+      await queryInterface.removeColumn('tasks', 'description', { transaction });
       await transaction.commit();
     } catch (err) {
       await transaction.rollback();

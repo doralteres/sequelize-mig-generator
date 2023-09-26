@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/doralteres/sequelize-mig-generator/compare/v0.0.6...v0.0.7) (2023-09-26)
+
+
+### Bug Fixes
+
+* :bug: sequelize complex dataTypes ([75f8e20](https://github.com/doralteres/sequelize-mig-generator/commit/75f8e2024156e3ace669f400f6d9282b1708ee6f))
+
 ### [0.0.6](https://github.com/doralteres/sequelize-mig-generator/compare/v0.0.5...v0.0.6) (2023-09-18)
 
 

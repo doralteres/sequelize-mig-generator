@@ -26,6 +26,10 @@ const Tasks = (sequelize: Sequelize) => {
         key: 'id',
       },
     },
+    tags: {
+      type: DataTypes.JSON,
+      defaultValue: [],
+    },
   });
 };
 

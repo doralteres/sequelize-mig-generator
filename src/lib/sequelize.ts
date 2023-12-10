@@ -7,7 +7,10 @@ async function initDb(sequelizePath: string): Promise<Sequelize> {
     consola.error(sequelizePath, 'does not exist');
     return Promise.reject('sequelize path not exist');
   }
-  const {default: init} = require(sequelizePath.slice(0, -3)); // Remove the extention {.js | ,ts}
+  const finalPathToImport = sequelizePath.endsWith('.js') // Remove the extention (.js)
+    ? sequelizePath.slice(0, -3)
+    : sequelizePath;
+  const {default: init} = require(finalPathToImport);
   if (!init) {
     consola.error(sequelizePath, 'does not have a default export');
     return Promise.reject(sequelizePath + ' does not have a default export');

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/doralteres/sequelize-mig-generator/compare/v0.0.8...v0.0.9) (2023-12-10)
+
+
+### Features
+
+* **args:** read default config from .sequelizerc file ([#25](https://github.com/doralteres/sequelize-mig-generator/issues/25)) ([1fa8548](https://github.com/doralteres/sequelize-mig-generator/commit/1fa8548cfd7c26649e61708cb50a1b4d5c06f372)), closes [#15](https://github.com/doralteres/sequelize-mig-generator/issues/15)
+
 ### [0.0.8](https://github.com/doralteres/sequelize-mig-generator/compare/v0.0.7...v0.0.8) (2023-10-08)
 
 ### [0.0.7](https://github.com/doralteres/sequelize-mig-generator/compare/v0.0.6...v0.0.7) (2023-09-26)

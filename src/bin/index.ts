@@ -13,21 +13,24 @@ program
   .description(description)
   .version(version)
   .option(
-    '-s, --sequelize-path <path>',
-    'Path for init sequelize, models and associations',
-    './models/index.js'
+    '-r, --rc-path <path>',
+    'Path for your .sequelizerc file',
+    '.sequelizerc'
   )
   .option(
-    '-m, --migrations-path <path>',
-    'Folder to save the generated migrations',
-    './migrations'
+    '-s, --sequelize-path [path]',
+    'Path for init sequelize, models and associations (default: [models-path] key from sequelize rc file)'
+  )
+  .option(
+    '-m, --migrations-path [path]',
+    'Folder to save the generated migrations (default: [migrations-path] key from sequelize rc file)'
   );
 
 program.parse();
 
-const {sequelizePath, migrationsPath}: mainArgs = program.opts();
+const {rcPath, sequelizePath, migrationsPath}: mainArgs = program.opts();
 
-main({migrationsPath, sequelizePath})
+main({rcPath, sequelizePath, migrationsPath})
   .then(() => {
     consola.success('Done');
   })

@@ -1,19 +1,28 @@
-import {join} from 'path';
 import consola from 'consola';
 
 import initDb from './lib/sequelize';
 import {getModelsJson, setModelsJson} from './lib/fs';
 import generateMigrations from './lib/migrations';
-import {mainArgs} from './types';
+import {getFinalConfig} from './lib/config';
 
 import {version} from '../package.json';
+import {mainArgs} from './types';
 
-const main = async ({migrationsPath, sequelizePath}: mainArgs) => {
+const main = async ({rcPath, migrationsPath, sequelizePath}: mainArgs) => {
   try {
-    const fullSequelizePath = join(process.cwd(), sequelizePath);
-    const fullMigrationsPath = join(process.cwd(), migrationsPath);
+    const {fullSequelizePath, fullMigrationsPath} = getFinalConfig({
+      sequelizePath,
+      migrationsPath,
+      rcPath,
+    });
+
+    consola.debug({fullSequelizePath, fullMigrationsPath});
 
     consola.info('Using sequelize-mig-generator', version);
+    consola.info('RC path:', rcPath);
+    consola.info('Sequelize path:', fullSequelizePath);
+    consola.info('Migrations path:', fullMigrationsPath);
+
     consola.start('Init Sequelize instance, models & associations');
     const sequelize = await initDb(fullSequelizePath);
     consola.success('Done');

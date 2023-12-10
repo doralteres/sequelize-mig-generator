@@ -28,6 +28,14 @@ export interface templateData {
 }
 
 export type mainArgs = {
-  sequelizePath: string;
-  migrationsPath: string;
+  rcPath: string;
+  sequelizePath?: string;
+  migrationsPath?: string;
+};
+
+export type sequelizeRc = {
+  'models-path': string;
+  'migrations-path': string;
+  'seeders-path'?: string;
+  config?: string;
 };

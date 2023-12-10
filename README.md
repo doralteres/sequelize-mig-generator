@@ -82,17 +82,20 @@ pnpm i sequelize-mig-generator -D
   - **sequelize path** - path to sequelize init script, should have a default exported function that return a promise with the updated sequelize object. (check the [example](./example/db/models/index.ts) for more info.)
   - **migrations folder** - tell the cli where to save the generated migration files.
 
-  ```bash
+  > Both of them are taken automatically from `.sequelizerc` file in case they are not set manually.
+
+  ```shell
   npx sequelize-mig-generator -h
   Usage: sequelize-mig-generator [options]
 
   Streamline the management of Sequelize database schema changes with a CLI tool for generating migration files effortlessly.
 
   Options:
-  -V, --version                 output the version number
-  -s, --sequelize-path <path>   Path for init sequelize, models and associations (default: "./models/index.js")
-  -m, --migrations-path <path>  Folder to save the generated migrations (default: "./migrations")
-  -h, --help                    display help for command
+    -V, --version                 output the version number
+    -r, --rc-path <path>          Path for your .sequelizerc file (default: ".sequelizerc")
+    -s, --sequelize-path [path]   Path for init sequelize, models and associations (default: [models-path] key from sequelize rc file)
+    -m, --migrations-path [path]  Folder to save the generated migrations (default: [migrations-path] key from sequelize rc file)
+    -h, --help                    display help for command
   ```
 
 ## Typescripts

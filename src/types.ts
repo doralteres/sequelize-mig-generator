@@ -1,4 +1,4 @@
-import {Model, ModelAttributeColumnOptions} from 'sequelize';
+import type {Model, ModelAttributeColumnOptions} from 'sequelize';
 
 export type modelsJsonType = {
   [model: string]: {

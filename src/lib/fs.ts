@@ -1,6 +1,6 @@
 import {existsSync, mkdirSync, readFileSync, writeFileSync} from 'fs';
-import {modelsJsonType} from '../types';
 import consola from 'consola';
+import type {modelsJsonType} from '../types.js';
 
 export const getModelsJson = async (migrationsPath: string) => {
   if (!existsSync(migrationsPath)) {

@@ -1,5 +1,6 @@
 import consola from 'consola';
 import {existsSync} from 'fs';
+import {join} from 'path';
 import {Sequelize} from 'sequelize';
 
 async function initDb(sequelizePath: string): Promise<Sequelize> {
@@ -8,9 +9,12 @@ async function initDb(sequelizePath: string): Promise<Sequelize> {
     return Promise.reject('sequelize path not exist');
   }
   const finalPathToImport = sequelizePath.endsWith('.js') // Remove the extention (.js)
-    ? sequelizePath.slice(0, -3)
-    : sequelizePath;
-  const {default: init} = require(finalPathToImport);
+    ? sequelizePath
+    : join(sequelizePath, 'index.js');
+
+  const {
+    default: {default: init},
+  } = await import(finalPathToImport);
   if (!init) {
     consola.error(sequelizePath, 'does not have a default export');
     return Promise.reject(sequelizePath + ' does not have a default export');

@@ -1,21 +1,28 @@
 import {join} from 'path';
-import {mainArgs, sequelizeRc} from '../types';
+import type {mainArgs, sequelizeRc} from '../types.js';
 
-export const getFinalConfig = ({
+export const getFinalConfig = async ({
   rcPath,
   migrationsPath,
   sequelizePath,
 }: mainArgs) => {
-  const rc: sequelizeRc =
-    !sequelizePath || !migrationsPath
-      ? require(join(process.cwd(), rcPath))
-      : {};
-  return {
-    fullSequelizePath: sequelizePath
-      ? join(process.cwd(), sequelizePath)
-      : rc['models-path'],
-    fullMigrationsPath: migrationsPath
-      ? join(process.cwd(), migrationsPath)
-      : rc['migrations-path'],
-  };
+  try {
+    const rc: sequelizeRc =
+      !sequelizePath || !migrationsPath
+        ? (await import(join(process.cwd(), rcPath))).default
+        : {};
+
+    return {
+      fullSequelizePath: sequelizePath
+        ? join(process.cwd(), sequelizePath)
+        : rc['models-path'],
+      fullMigrationsPath: migrationsPath
+        ? join(process.cwd(), migrationsPath)
+        : rc['migrations-path'],
+    };
+  } catch (e) {
+    return Promise.reject(
+      "Can't import .sequelizerc file - probabbly because you are using an ES Module that does not allowed to import files without an extension. Please set the paths manually!"
+    );
+  }
 };

@@ -1,6 +1,7 @@
 {
   "name": "sequelize-mig-generator",
   "description": "Streamline the management of Sequelize database schema changes with a CLI tool for generating migration files effortlessly.",
+  "type": "module",
   "keywords": [
     "sequelize",
     "cli",
@@ -26,7 +27,7 @@
     "dist"
   ],
   "engines": {
-    "node": ">8.5.0"
+    "node": ">=16"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.197",
@@ -35,7 +36,6 @@
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "gts": "^5.0.0",
-    "standard-version": "^9.5.0",
     "ts-node": "^10.9.1",
     "typescript": "~5.3.3"
   },

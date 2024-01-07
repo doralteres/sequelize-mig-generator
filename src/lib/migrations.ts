@@ -1,12 +1,12 @@
-import {
+import type {
   Model,
   ModelAttributeColumnOptions,
   NumberDataTypeOptions,
   Sequelize,
   TextDataTypeOptions,
 } from 'sequelize';
-import {modelsJsonType} from '../types';
-import renderTemplate from './templates';
+import type {modelsJsonType} from '../types.js';
+import renderTemplate from './templates.js';
 import consola from 'consola';
 
 const getSortedModels = async (sequelize: Sequelize) => {

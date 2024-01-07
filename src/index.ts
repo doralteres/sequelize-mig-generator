@@ -1,16 +1,18 @@
 import consola from 'consola';
 
-import initDb from './lib/sequelize';
-import {getModelsJson, setModelsJson} from './lib/fs';
-import generateMigrations from './lib/migrations';
-import {getFinalConfig} from './lib/config';
+import initDb from './lib/sequelize.js';
+import {getModelsJson, setModelsJson} from './lib/fs.js';
+import generateMigrations from './lib/migrations.js';
+import {getFinalConfig} from './lib/config.js';
 
-import {version} from '../package.json';
-import {mainArgs} from './types';
+import type {mainArgs} from './types.js';
 
-const main = async ({rcPath, migrationsPath, sequelizePath}: mainArgs) => {
+const main = async (
+  {rcPath, migrationsPath, sequelizePath}: mainArgs,
+  version: string
+) => {
   try {
-    const {fullSequelizePath, fullMigrationsPath} = getFinalConfig({
+    const {fullSequelizePath, fullMigrationsPath} = await getFinalConfig({
       sequelizePath,
       migrationsPath,
       rcPath,

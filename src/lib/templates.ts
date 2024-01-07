@@ -1,8 +1,8 @@
 import * as HB from 'handlebars';
-import {templateData, templates} from '../types';
 import {existsSync, readFileSync, writeFile} from 'fs';
 import {join, resolve} from 'path';
 import consola from 'consola';
+import type {templateData, templates} from '../types.js';
 
 const fileExtention = 'template.hbs';
 

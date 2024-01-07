@@ -1,11 +1,15 @@
 #!/usr/bin/env node
 import {Command} from 'commander';
 
-import {name, version, description} from '../../package.json';
-import {mainArgs} from '../types';
-import main from '..';
+import main from '../index.js';
 import consola from 'consola';
+import type {mainArgs} from '../types.js';
 
+const {
+  default: {name, version, description},
+} = await import('../../package.json', {
+  assert: {type: 'json'},
+});
 const program = new Command();
 
 program
@@ -30,11 +34,11 @@ program.parse();
 
 const {rcPath, sequelizePath, migrationsPath}: mainArgs = program.opts();
 
-main({rcPath, sequelizePath, migrationsPath})
+main({rcPath, sequelizePath, migrationsPath}, version)
   .then(() => {
     consola.success('Done');
   })
   .catch(e => {
-    consola.error(new Error('sequelize-mig-generator error'));
+    consola.error(e);
     throw new Error(e);
   });

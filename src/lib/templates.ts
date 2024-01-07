@@ -1,10 +1,13 @@
-import * as HB from 'handlebars';
+import HB from 'handlebars';
 import {existsSync, readFileSync, writeFile} from 'fs';
 import {join, resolve} from 'path';
 import consola from 'consola';
 import type {templateData, templates} from '../types.js';
+import {fileURLToPath} from 'url';
 
 const fileExtention = 'template.hbs';
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 const format = (i: number) => {
   return i < 10 ? `0${i}` : i;

@@ -18,9 +18,6 @@ const settings = (sequelize: Sequelize) => {
     value: {
       type: DataTypes.STRING,
     },
-    isActive: {
-      type: DataTypes.BOOLEAN,
-    },
   });
 };
 

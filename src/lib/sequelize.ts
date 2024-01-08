@@ -11,12 +11,13 @@ async function initDb(sequelizePath: string): Promise<Sequelize> {
   const finalPathToImport = sequelizePath.endsWith('.js') // Remove the extention (.js)
     ? sequelizePath
     : join(sequelizePath, 'index.js');
-
-  const {
-    default: {default: init},
-  } = await import(finalPathToImport);
-  if (!init) {
-    consola.error(sequelizePath, 'does not have a default export');
+  let init;
+  const {default: esmDefault} = await import(finalPathToImport);
+  if (typeof esmDefault === 'function') {
+    init = esmDefault;
+  } else if (typeof esmDefault?.default === 'function') {
+    init = esmDefault.default;
+  } else {
     return Promise.reject(sequelizePath + ' does not have a default export');
   }
   try {

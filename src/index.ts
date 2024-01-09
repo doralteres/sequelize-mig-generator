@@ -35,7 +35,10 @@ const main = async (
       modelsJson,
       fullMigrationsPath
     );
+    consola.success('Done');
+    consola.start('Update models.json if needed');
     await setModelsJson(fullMigrationsPath, newModelsJson);
+    consola.success('Done');
   } catch (e) {
     return Promise.reject(e);
   }

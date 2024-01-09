@@ -1,6 +1,8 @@
 import {existsSync, mkdirSync, readFileSync, writeFileSync} from 'fs';
 import consola from 'consola';
 import type {modelsJsonType} from '../types.js';
+import {fileURLToPath} from 'url';
+import {resolve} from 'path';
 
 export const getModelsJson = async (migrationsPath: string) => {
   if (!existsSync(migrationsPath)) {
@@ -34,4 +36,11 @@ export const setModelsJson = async (
     consola.error('failed to set models.json file', e);
     return Promise.reject(e);
   }
+};
+
+export const loadPackageJson = () => {
+  const __dirname = fileURLToPath(new URL('.', import.meta.url));
+  return JSON.parse(
+    readFileSync(resolve(__dirname, '../../../package.json')).toString()
+  );
 };

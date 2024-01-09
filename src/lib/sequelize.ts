@@ -21,9 +21,7 @@ async function initDb(sequelizePath: string): Promise<Sequelize> {
     return Promise.reject(sequelizePath + ' does not have a default export');
   }
   try {
-    console.group('Sequelize init');
     const res: Sequelize = await init();
-    console.groupEnd();
     return res;
   } catch (e) {
     return Promise.reject(e);

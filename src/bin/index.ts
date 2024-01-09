@@ -4,12 +4,10 @@ import {Command} from 'commander';
 import main from '../index.js';
 import consola from 'consola';
 import type {mainArgs} from '../types.js';
+import {loadPackageJson} from '../lib/fs.js';
 
-const {
-  default: {name, version, description},
-} = await import('../../package.json', {
-  assert: {type: 'json'},
-});
+const {name, version, description} = loadPackageJson();
+
 const program = new Command();
 
 program
@@ -36,7 +34,7 @@ const {rcPath, sequelizePath, migrationsPath}: mainArgs = program.opts();
 
 main({rcPath, sequelizePath, migrationsPath}, version)
   .then(() => {
-    consola.success('Done');
+    consola.success('Finish');
   })
   .catch(e => {
     consola.error(e);

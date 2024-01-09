@@ -17,6 +17,9 @@ const activities = (sequelize: Sequelize) => {
     comment: {
       type: DataTypes.STRING,
     },
+    isDone: {
+      type: DataTypes.BOOLEAN,
+    },
   });
 };
 

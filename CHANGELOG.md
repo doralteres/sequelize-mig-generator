@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/doralteres/sequelize-mig-generator/compare/v0.0.9...v0.1.0) (2024-01-09)
+
+
+### Features
+
+* :zap: Move to ESM ([79cef60](https://github.com/doralteres/sequelize-mig-generator/commit/79cef605694338d86334cd6620200a828b717509))
+
+
+### Bug Fixes
+
+* :bug: Handlebar registerFunction issue ([6c778ed](https://github.com/doralteres/sequelize-mig-generator/commit/6c778ede903243bde5ab20e0aabd851220bd03bb))
+* esm default import issue ([c5d5890](https://github.com/doralteres/sequelize-mig-generator/commit/c5d58901b912d5f3295ba981424c4902226b34ba))
+
+
+### Performance Improvements
+
+* :zap: better way to import json on esm ([0d1d997](https://github.com/doralteres/sequelize-mig-generator/commit/0d1d997b260617fb5ba17daf11df2cdb1483e0ae))
+
 ### [0.0.9](https://github.com/doralteres/sequelize-mig-generator/compare/v0.0.8...v0.0.9) (2023-12-10)
 
 

@@ -7,10 +7,9 @@ on:
       - main
     paths-ignore:
       - '**.md'
-      # - '.github/**'
+      - '.github/**'
       - 'example/**'
       - 'images/**'
-      - 'package.json'
       - 'yarn.lock'
 jobs:
   build:

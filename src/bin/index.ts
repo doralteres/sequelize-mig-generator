@@ -20,6 +20,11 @@ program
     '.sequelizerc'
   )
   .option(
+    '-e, --extension <extension>',
+    'Extensiton for your migration files',
+    '.js'
+  )
+  .option(
     '-s, --sequelize-path [path]',
     'Path for init sequelize, models and associations (default: [models-path] key from sequelize rc file)'
   )
@@ -30,9 +35,14 @@ program
 
 program.parse();
 
-const {rcPath, sequelizePath, migrationsPath}: mainArgs = program.opts();
+const {rcPath, sequelizePath, migrationsPath, extension}: mainArgs =
+  program.opts();
 
-main({rcPath, sequelizePath, migrationsPath}, version)
+if (!extension?.startsWith('.')) {
+  consola.error('File extension must start with dot (.)');
+  throw new Error();
+}
+main({rcPath, sequelizePath, migrationsPath, extension}, version)
   .then(() => {
     consola.success('Finish');
   })

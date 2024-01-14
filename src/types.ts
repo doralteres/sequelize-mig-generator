@@ -31,6 +31,7 @@ export type mainArgs = {
   rcPath: string;
   sequelizePath?: string;
   migrationsPath?: string;
+  extension?: string;
 };
 
 export type sequelizeRc = {

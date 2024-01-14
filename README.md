@@ -93,6 +93,7 @@ pnpm i sequelize-mig-generator -D
   Options:
     -V, --version                 output the version number
     -r, --rc-path <path>          Path for your .sequelizerc file (default: ".sequelizerc")
+    -e, --extension <extension>   Extensiton for your migration files (default: ".js")
     -s, --sequelize-path [path]   Path for init sequelize, models and associations (default: [models-path] key from sequelize rc file)
     -m, --migrations-path [path]  Folder to save the generated migrations (default: [migrations-path] key from sequelize rc file)
     -h, --help                    display help for command

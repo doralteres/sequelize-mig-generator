@@ -44,7 +44,8 @@ const addTypesToModel = async (modelAttr: {
 const generateMigrations = async (
   sequelize: Sequelize,
   modelsJson: modelsJsonType,
-  migrationsPath: string
+  migrationsPath: string,
+  extension?: string
 ) => {
   const newModelsJson: modelsJsonType = {};
   const sortedModels = await getSortedModels(sequelize);
@@ -58,7 +59,8 @@ const generateMigrations = async (
       await renderTemplate(
         'createTable',
         {tableName: model, attributes: modelAttr},
-        migrationsPath
+        migrationsPath,
+        extension
       );
     } else {
       for (const attr in modelAttr) {
@@ -67,7 +69,8 @@ const generateMigrations = async (
           await renderTemplate(
             'addColumn',
             {tableName: model, columnName: attr, attributes: modelAttr[attr]},
-            migrationsPath
+            migrationsPath,
+            extension
           );
         } else {
           if (
@@ -83,7 +86,8 @@ const generateMigrations = async (
                 attributes: modelAttr[attr],
                 prevAttributes: modelsJson[model][attr],
               },
-              migrationsPath
+              migrationsPath,
+              extension
             );
           }
         }
@@ -94,7 +98,12 @@ const generateMigrations = async (
   for (const model in modelsJson) {
     if (Object.keys(sequelize.models).indexOf(model) === -1) {
       consola.start(model, 'shouldnt exist, deleting table');
-      await renderTemplate('removeTable', {tableName: model}, migrationsPath);
+      await renderTemplate(
+        'removeTable',
+        {tableName: model},
+        migrationsPath,
+        extension
+      );
     } else {
       const modelObj = sequelize.models[model];
       const modelAttr = modelObj.getAttributes();
@@ -105,7 +114,8 @@ const generateMigrations = async (
           await renderTemplate(
             'removeColumn',
             {tableName: model, columnName: attr},
-            migrationsPath
+            migrationsPath,
+            extension
           );
         }
       }

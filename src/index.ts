@@ -8,7 +8,7 @@ import {getFinalConfig} from './lib/config.js';
 import type {mainArgs} from './types.js';
 
 const main = async (
-  {rcPath, migrationsPath, sequelizePath}: mainArgs,
+  {rcPath, migrationsPath, sequelizePath, extension}: mainArgs,
   version: string
 ) => {
   try {
@@ -33,7 +33,8 @@ const main = async (
     const newModelsJson = await generateMigrations(
       sequelize,
       modelsJson,
-      fullMigrationsPath
+      fullMigrationsPath,
+      extension
     );
     consola.success('Done');
     consola.start('Update models.json if needed');

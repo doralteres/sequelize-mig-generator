@@ -27,10 +27,10 @@ const getCurrentYYYYMMDDHHmms = () => {
 
 const generateFileName = (
   templateName: templates,
-  {tableName, columnName}: templateData
+  {tableName, columnName}: templateData,
+  fileExtention?: string
 ) => {
   const ts = getCurrentYYYYMMDDHHmms();
-  const fileExtention = '.js';
   const separator = '-';
   switch (templateName) {
     case 'createTable':
@@ -66,7 +66,8 @@ const sleep = async (ms: number) =>
 const renderTemplate = async (
   templateName: templates,
   data: templateData,
-  migrationsPath: string
+  migrationsPath: string,
+  extension?: string
 ): Promise<boolean> => {
   await sleep(1000);
   return new Promise((res, rej) => {
@@ -109,7 +110,7 @@ const renderTemplate = async (
     );
     const template = HB.compile(readFileSync(templatePath).toString());
     const content = template(data);
-    const fileName = generateFileName(templateName, data);
+    const fileName = generateFileName(templateName, data, extension);
     writeFile(join(migrationsPath, fileName), content, () => {
       consola.success(fileName, 'Created!');
       res(true);

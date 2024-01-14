@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/doralteres/sequelize-mig-generator/compare/v0.1.0...v0.2.0) (2024-01-14)
+
+
+### Features
+
+* :sparkles: support custom migration file extention (cjs, mjs, etc.) ([f0b48f9](https://github.com/doralteres/sequelize-mig-generator/commit/f0b48f9ae7815e9e9aca4e404e4d408a62dce149))
+
+
+### Bug Fixes
+
+* :bug: import sequelizerc on ESM issue ([2e132ae](https://github.com/doralteres/sequelize-mig-generator/commit/2e132ae7144b905d4972f949357df9712984b437))
+
 ## [0.1.0](https://github.com/doralteres/sequelize-mig-generator/compare/v0.0.9...v0.1.0) (2024-01-09)
 
 

@@ -55,7 +55,7 @@
     "release": "standard-version --releaseCommitMessageFormat 'chore(release): {{currentTag}} :dizzy: [skip ci]'"
   },
   "dependencies": {
-    "commander": "^11.0.0",
+    "commander": "^12.0.0",
     "consola": "^3.2.3",
     "handlebars": "^4.7.8",
     "lodash": "^4.17.21",
